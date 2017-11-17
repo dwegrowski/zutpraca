@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_appClass</class>
+ <widget class="QMainWindow" name="main_appClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>697</width>
+    <height>587</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>main_app</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QListWidget#listWidget_2 {
+background-color: rgba(0,0,0,0);
+border: none;
+}
+QListWidget#listWidget_2::item {
+background-color: rgba(222,222,222,255);
+border: 1px solid rgba(150,150,150,255);
+width: 40px;
+height: 40px;
+alignment: center;
+}
+QListWidget#toAddGesturesListWidget::item {
+background-color: rgba(230,230,230,255);
+border: 1px solid rgba(250,250,250,255);
+width: 40px;
+height: 40px;
+alignment: center;
+}
+QListWidget#toAddGesturesListWidget::item:hover {
+background-color: rgba(255,114,114,255);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QListWidget" name="listWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="viewMode">
+       <enum>QListView::ListMode</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Add new gesture</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="topMargin">
+        <number>1</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="verticalWidget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QListWidget" name="listWidget_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="cursor" stdset="0">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="showDropIndicator" stdset="0">
+             <bool>false</bool>
+            </property>
+            <property name="dragDropMode">
+             <enum>QAbstractItemView::NoDragDrop</enum>
+            </property>
+            <property name="defaultDropAction">
+             <enum>Qt::CopyAction</enum>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>false</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::NoSelection</enum>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>34</width>
+              <height>34</height>
+             </size>
+            </property>
+            <property name="flow">
+             <enum>QListView::LeftToRight</enum>
+            </property>
+            <property name="isWrapping" stdset="0">
+             <bool>false</bool>
+            </property>
+            <property name="resizeMode">
+             <enum>QListView::Fixed</enum>
+            </property>
+            <property name="spacing">
+             <number>3</number>
+            </property>
+            <property name="viewMode">
+             <enum>QListView::ListMode</enum>
+            </property>
+            <property name="uniformItemSizes">
+             <bool>false</bool>
+            </property>
+            <property name="batchSize">
+             <number>100</number>
+            </property>
+            <property name="selectionRectVisible">
+             <bool>true</bool>
+            </property>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="textAlignment">
+              <set>AlignTrailing|AlignVCenter</set>
+             </property>
+             <property name="background">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>222</red>
+                <green>222</green>
+                <blue>222</blue>
+               </color>
+              </brush>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Down.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Down.ico</iconset>
+             </property>
+             <property name="flags">
+              <set>ItemIsEnabled</set>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Up.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Up.ico</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Left.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Left.ico</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Right.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Right.ico</iconset>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="toAddGesturesListWidget">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::StrongFocus</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="showDropIndicator" stdset="0">
+             <bool>false</bool>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>34</width>
+              <height>34</height>
+             </size>
+            </property>
+            <property name="flow">
+             <enum>QListView::LeftToRight</enum>
+            </property>
+            <property name="resizeMode">
+             <enum>QListView::Fixed</enum>
+            </property>
+            <property name="selectionRectVisible">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>E:/Pobrane/icons8-checkmark-filled.png</normaloff>E:/Pobrane/icons8-checkmark-filled.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>697</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="main_app.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>listWidget_2</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>692</x>
+     <y>372</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toAddGesturesListWidget</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>main_appClass</receiver>
+   <slot>removeFromGesturesToBeAdded(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>351</x>
+     <y>503</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>692</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addToGesturesToBeAdded(QListWidgetItem*)</slot>
+  <slot>removeFromGesturesToBeAdded(QListWidgetItem*)</slot>
+ </slots>
+</ui>
