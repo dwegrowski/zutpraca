@@ -34,6 +34,7 @@ int GestureRecognizer::algorithm(Mat frame)
 {
     int fingers = 0;
     Mat mask;
+    static int correct_noise = 0;
     
     Mat element = getStructuringElement(0, { 5,5 });
 
@@ -42,7 +43,7 @@ int GestureRecognizer::algorithm(Mat frame)
     // FILTER FRAME ----------------------------------------
 
     GaussianBlur(frame, frame, { 7, 7 }, 0);
-    pMOG2->apply(frame, mask, 0);
+    pMOG2->apply(frame, mask, 0.0005);
     medianBlur(mask, mask, 7);
     Mat el = getStructuringElement(0, { 5,5 });
     filter2D(mask, mask, CV_8U, el);
@@ -66,7 +67,13 @@ int GestureRecognizer::algorithm(Mat frame)
             largest_contour_index = i;              //Store the index of largest contour
         }
     }
-
+    /*if (largest_area > frame.rows * frame.cols * 0.90)
+    {
+        correct_noise = -1;
+        return fingers;
+    }
+    else
+        correct_noise = 0;*/
     // FILL THE POSSIBLE HAND REGION
     std::vector<std::vector<cv::Point>> contours2{ contours[largest_contour_index] };
     drawContours(mask, contours2, 0, { 255, 0 ,0 }, CV_FILLED);

@@ -44,7 +44,7 @@ void VideoThread::run()
             
             auto t = timer.restart();
             qDebug() << hand2 << hand << t;
-            if (t >= 900)
+            if (t >= 500)
             {
                /* qDebug() << "Wczytano " << hand;
                 if (hand == 0)
@@ -59,10 +59,10 @@ void VideoThread::run()
                 }
                 else
                 {*/
-                if (hand2 != 0)
+                if (hand != 0)
                 {
-                    qDebug() << "APPENDUJE " << hand2;
-                    g.append(static_cast<HandMovement>(hand2));
+                    qDebug() << "APPENDUJE " << hand;
+                    g.append(static_cast<HandMovement>(hand));
                 }
                 //}
                 
