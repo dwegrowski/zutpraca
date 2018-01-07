@@ -2,16 +2,18 @@
 #include <QAbstractListModel>
 #include "Gesture.h"
 
-class GestureModel : QAbstractItemModel
+const QString filename = "user_gestures.txt";
+
+class GestureModel
 {
-    Q_OBJECT
 public:
     GestureModel();
     ~GestureModel();
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    //QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-private:
-    QList<Gesture> list;
+    void add(Gesture);
+    void saveToFile(Gesture);
+    QList<Gesture> readFromFile();
+    void removeFromFile(int row);
+    QVector<Gesture> list;
 };
 

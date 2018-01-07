@@ -1,6 +1,14 @@
 #pragma once
 #include <QList>
+#include <qvector.h>
+
 enum class HandMovement {
+    ZERO,
+    ONE,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
     UP,
     DOWN,
     LEFT,
@@ -18,13 +26,15 @@ enum class Action {
     LOGOUT
 };
 
+extern QMap<Action, QString> action_command;
+
 class Gesture
 {
 public:
     Gesture();
     ~Gesture();
-private:
-    QList<HandMovement> gestures;
+
+    QVector<HandMovement> gestures;
     Action action;
 };
 

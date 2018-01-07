@@ -51,11 +51,17 @@
     <ClCompile Include="Gesture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GestureModel.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_VideoThread.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GestureModel.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_VideoThread.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GestureRecognizer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,10 +74,13 @@
     <CustomBuild Include="main_app.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="MyListWidget.ui">
+    <CustomBuild Include="GestureModel.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GestureWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="GestureModel.h">
+    <CustomBuild Include="VideoThread.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -79,11 +88,21 @@
     <ClInclude Include="GeneratedFiles\ui_main_app.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MyListWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="Gesture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_GestureWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GestureRecognizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ZUTInzynierka.pro" />
+    <None Include="ZUTInzynierka.pri" />
   </ItemGroup>
 </Project>

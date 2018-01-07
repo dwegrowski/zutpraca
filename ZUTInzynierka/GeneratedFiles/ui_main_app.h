@@ -19,8 +19,10 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -29,18 +31,32 @@ QT_BEGIN_NAMESPACE
 class Ui_main_appClass
 {
 public:
+    QAction *actionStart;
+    QAction *actionStop;
+    QAction *actionInfo;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QListWidget *gesturesList;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout;
     QWidget *verticalWidget;
     QVBoxLayout *verticalLayout_2;
-    QListWidget *listWidget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *oneButton;
+    QPushButton *twoButton;
+    QPushButton *threeButton;
+    QPushButton *fourButton;
+    QPushButton *fiveButton;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer;
     QListWidget *toAddGesturesListWidget;
     QComboBox *comboBox;
     QPushButton *pushButton;
     QMenuBar *menuBar;
+    QMenu *menuStart;
 
     void setupUi(QMainWindow *main_appClass)
     {
@@ -67,102 +83,176 @@ public:
 "}\n"
 "QListWidget#toAddGesturesListWidget::item:hover {\n"
 "background-color: rgba(255,114,114,255);\n"
+"border: none;\n"
 "}"));
+        actionStart = new QAction(main_appClass);
+        actionStart->setObjectName(QStringLiteral("actionStart"));
+        actionStop = new QAction(main_appClass);
+        actionStop->setObjectName(QStringLiteral("actionStop"));
+        actionInfo = new QAction(main_appClass);
+        actionInfo->setObjectName(QStringLiteral("actionInfo"));
         centralWidget = new QWidget(main_appClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        listWidget = new QListWidget(centralWidget);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
+        gesturesList = new QListWidget(centralWidget);
+        gesturesList->setObjectName(QStringLiteral("gesturesList"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
-        listWidget->setSizePolicy(sizePolicy);
-        listWidget->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
-        listWidget->setViewMode(QListView::ListMode);
+        sizePolicy.setHeightForWidth(gesturesList->sizePolicy().hasHeightForWidth());
+        gesturesList->setSizePolicy(sizePolicy);
+        gesturesList->setStyleSheet(QStringLiteral(""));
+        gesturesList->setFrameShadow(QFrame::Plain);
+        gesturesList->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        gesturesList->setProperty("showDropIndicator", QVariant(false));
+        gesturesList->setIconSize(QSize(34, 34));
+        gesturesList->setResizeMode(QListView::Adjust);
+        gesturesList->setSpacing(5);
+        gesturesList->setViewMode(QListView::ListMode);
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(gesturesList);
 
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy1);
         horizontalLayout = new QHBoxLayout(groupBox);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(-1, 1, -1, -1);
+        horizontalLayout->setContentsMargins(-1, 1, -1, 3);
         verticalWidget = new QWidget(groupBox);
         verticalWidget->setObjectName(QStringLiteral("verticalWidget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(verticalWidget->sizePolicy().hasHeightForWidth());
-        verticalWidget->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(verticalWidget->sizePolicy().hasHeightForWidth());
+        verticalWidget->setSizePolicy(sizePolicy2);
         verticalWidget->setMinimumSize(QSize(0, 0));
         verticalLayout_2 = new QVBoxLayout(verticalWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(-1, 3, -1, -1);
-        listWidget_2 = new QListWidget(verticalWidget);
-        QIcon icon;
-        icon.addFile(QStringLiteral("E:/Pobrane/Icons8-Ios7-Arrows-Down.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        QBrush brush(QColor(222, 222, 222, 255));
-        brush.setStyle(Qt::SolidPattern);
-        QListWidgetItem *__qlistwidgetitem = new QListWidgetItem(listWidget_2);
-        __qlistwidgetitem->setTextAlignment(Qt::AlignTrailing|Qt::AlignVCenter);
-        __qlistwidgetitem->setBackground(brush);
-        __qlistwidgetitem->setIcon(icon);
-        __qlistwidgetitem->setFlags(Qt::ItemIsEnabled);
-        QIcon icon1;
-        icon1.addFile(QStringLiteral("E:/Pobrane/Icons8-Ios7-Arrows-Up.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        QListWidgetItem *__qlistwidgetitem1 = new QListWidgetItem(listWidget_2);
-        __qlistwidgetitem1->setIcon(icon1);
-        QIcon icon2;
-        icon2.addFile(QStringLiteral("E:/Pobrane/Icons8-Ios7-Arrows-Left.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        QListWidgetItem *__qlistwidgetitem2 = new QListWidgetItem(listWidget_2);
-        __qlistwidgetitem2->setIcon(icon2);
-        QIcon icon3;
-        icon3.addFile(QStringLiteral("E:/Pobrane/Icons8-Ios7-Arrows-Right.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        QListWidgetItem *__qlistwidgetitem3 = new QListWidgetItem(listWidget_2);
-        __qlistwidgetitem3->setIcon(icon3);
-        listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
-        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(listWidget_2->sizePolicy().hasHeightForWidth());
-        listWidget_2->setSizePolicy(sizePolicy2);
-        listWidget_2->setMinimumSize(QSize(0, 50));
-        listWidget_2->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
-        listWidget_2->setStyleSheet(QStringLiteral(""));
-        listWidget_2->setFrameShape(QFrame::NoFrame);
-        listWidget_2->setFrameShadow(QFrame::Sunken);
-        listWidget_2->setProperty("showDropIndicator", QVariant(false));
-        listWidget_2->setDragDropMode(QAbstractItemView::NoDragDrop);
-        listWidget_2->setDefaultDropAction(Qt::CopyAction);
-        listWidget_2->setAlternatingRowColors(false);
-        listWidget_2->setSelectionMode(QAbstractItemView::NoSelection);
-        listWidget_2->setIconSize(QSize(34, 34));
-        listWidget_2->setFlow(QListView::LeftToRight);
-        listWidget_2->setProperty("isWrapping", QVariant(false));
-        listWidget_2->setResizeMode(QListView::Fixed);
-        listWidget_2->setSpacing(3);
-        listWidget_2->setViewMode(QListView::ListMode);
-        listWidget_2->setUniformItemSizes(false);
-        listWidget_2->setBatchSize(100);
-        listWidget_2->setSelectionRectVisible(true);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
+        oneButton = new QPushButton(verticalWidget);
+        oneButton->setObjectName(QStringLiteral("oneButton"));
+        oneButton->setMinimumSize(QSize(42, 42));
+        oneButton->setMaximumSize(QSize(42, 42));
+        QFont font;
+        font.setPointSize(15);
+        oneButton->setFont(font);
 
-        verticalLayout_2->addWidget(listWidget_2);
+        horizontalLayout_2->addWidget(oneButton);
+
+        twoButton = new QPushButton(verticalWidget);
+        twoButton->setObjectName(QStringLiteral("twoButton"));
+        twoButton->setMaximumSize(QSize(42, 42));
+        twoButton->setFont(font);
+
+        horizontalLayout_2->addWidget(twoButton);
+
+        threeButton = new QPushButton(verticalWidget);
+        threeButton->setObjectName(QStringLiteral("threeButton"));
+        threeButton->setMaximumSize(QSize(42, 42));
+        threeButton->setFont(font);
+
+        horizontalLayout_2->addWidget(threeButton);
+
+        fourButton = new QPushButton(verticalWidget);
+        fourButton->setObjectName(QStringLiteral("fourButton"));
+        fourButton->setMaximumSize(QSize(42, 42));
+        fourButton->setFont(font);
+
+        horizontalLayout_2->addWidget(fourButton);
+
+        fiveButton = new QPushButton(verticalWidget);
+        fiveButton->setObjectName(QStringLiteral("fiveButton"));
+        fiveButton->setMaximumSize(QSize(42, 42));
+        fiveButton->setFont(font);
+
+        horizontalLayout_2->addWidget(fiveButton);
+
+        pushButton_5 = new QPushButton(verticalWidget);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
+        pushButton_5->setSizePolicy(sizePolicy3);
+        pushButton_5->setMinimumSize(QSize(42, 42));
+        pushButton_5->setMaximumSize(QSize(42, 42));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/main_app/upArrow"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_5->setIcon(icon);
+        pushButton_5->setIconSize(QSize(32, 32));
+
+        horizontalLayout_2->addWidget(pushButton_5);
+
+        pushButton_4 = new QPushButton(verticalWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy4);
+        pushButton_4->setMinimumSize(QSize(42, 42));
+        pushButton_4->setMaximumSize(QSize(42, 42));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/main_app/downArrow"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_4->setIcon(icon1);
+        pushButton_4->setIconSize(QSize(32, 32));
+
+        horizontalLayout_2->addWidget(pushButton_4);
+
+        pushButton_3 = new QPushButton(verticalWidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        QSizePolicy sizePolicy5(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy5);
+        pushButton_3->setMaximumSize(QSize(42, 42));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/main_app/leftArrow"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_3->setIcon(icon2);
+        pushButton_3->setIconSize(QSize(32, 32));
+
+        horizontalLayout_2->addWidget(pushButton_3);
+
+        pushButton_2 = new QPushButton(verticalWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setMaximumSize(QSize(42, 42));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/main_app/rightArrow"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_2->setIcon(icon3);
+        pushButton_2->setIconSize(QSize(32, 32));
+
+        horizontalLayout_2->addWidget(pushButton_2);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
 
         toAddGesturesListWidget = new QListWidget(verticalWidget);
         toAddGesturesListWidget->setObjectName(QStringLiteral("toAddGesturesListWidget"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(toAddGesturesListWidget->sizePolicy().hasHeightForWidth());
-        toAddGesturesListWidget->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(toAddGesturesListWidget->sizePolicy().hasHeightForWidth());
+        toAddGesturesListWidget->setSizePolicy(sizePolicy6);
         toAddGesturesListWidget->setMinimumSize(QSize(0, 50));
         toAddGesturesListWidget->setBaseSize(QSize(0, 0));
         toAddGesturesListWidget->setFocusPolicy(Qt::StrongFocus);
@@ -171,7 +261,7 @@ public:
         toAddGesturesListWidget->setIconSize(QSize(34, 34));
         toAddGesturesListWidget->setFlow(QListView::LeftToRight);
         toAddGesturesListWidget->setResizeMode(QListView::Fixed);
-        toAddGesturesListWidget->setSelectionRectVisible(true);
+        toAddGesturesListWidget->setSelectionRectVisible(false);
 
         verticalLayout_2->addWidget(toAddGesturesListWidget);
 
@@ -201,11 +291,30 @@ public:
         menuBar = new QMenuBar(main_appClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 697, 21));
+        menuStart = new QMenu(menuBar);
+        menuStart->setObjectName(QStringLiteral("menuStart"));
         main_appClass->setMenuBar(menuBar);
 
+        menuBar->addAction(menuStart->menuAction());
+        menuStart->addAction(actionStart);
+        menuStart->addAction(actionStop);
+        menuStart->addAction(actionInfo);
+
         retranslateUi(main_appClass);
-        QObject::connect(listWidget_2, SIGNAL(itemClicked(QListWidgetItem*)), main_appClass, SLOT(addToGesturesToBeAdded(QListWidgetItem*)));
         QObject::connect(toAddGesturesListWidget, SIGNAL(itemClicked(QListWidgetItem*)), main_appClass, SLOT(removeFromGesturesToBeAdded(QListWidgetItem*)));
+        QObject::connect(pushButton_2, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(pushButton_3, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(pushButton_4, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(pushButton_5, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(pushButton, SIGNAL(clicked()), main_appClass, SLOT(addGesture()));
+        QObject::connect(actionStop, SIGNAL(triggered()), main_appClass, SLOT(actionStop()));
+        QObject::connect(actionStart, SIGNAL(triggered()), main_appClass, SLOT(actionStart()));
+        QObject::connect(actionInfo, SIGNAL(triggered()), main_appClass, SLOT(actionInfo()));
+        QObject::connect(fiveButton, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(fourButton, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(threeButton, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(twoButton, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
+        QObject::connect(oneButton, SIGNAL(clicked()), main_appClass, SLOT(addToGesturesToBeAdded()));
 
         QMetaObject::connectSlotsByName(main_appClass);
     } // setupUi
@@ -213,13 +322,48 @@ public:
     void retranslateUi(QMainWindow *main_appClass)
     {
         main_appClass->setWindowTitle(QApplication::translate("main_appClass", "main_app", Q_NULLPTR));
+        actionStart->setText(QApplication::translate("main_appClass", "Start", Q_NULLPTR));
+        actionStop->setText(QApplication::translate("main_appClass", "Stop", Q_NULLPTR));
+        actionInfo->setText(QApplication::translate("main_appClass", "Info", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("main_appClass", "Add new gesture", Q_NULLPTR));
-
-        const bool __sortingEnabled = listWidget_2->isSortingEnabled();
-        listWidget_2->setSortingEnabled(false);
-        listWidget_2->setSortingEnabled(__sortingEnabled);
-
+#ifndef QT_NO_ACCESSIBILITY
+        oneButton->setAccessibleName(QApplication::translate("main_appClass", "tone", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        oneButton->setText(QApplication::translate("main_appClass", "1", Q_NULLPTR));
+#ifndef QT_NO_ACCESSIBILITY
+        twoButton->setAccessibleName(QApplication::translate("main_appClass", "ttwo", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        twoButton->setText(QApplication::translate("main_appClass", "2", Q_NULLPTR));
+#ifndef QT_NO_ACCESSIBILITY
+        threeButton->setAccessibleName(QApplication::translate("main_appClass", "tthree", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        threeButton->setText(QApplication::translate("main_appClass", "3", Q_NULLPTR));
+#ifndef QT_NO_ACCESSIBILITY
+        fourButton->setAccessibleName(QApplication::translate("main_appClass", "tfour", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        fourButton->setText(QApplication::translate("main_appClass", "4", Q_NULLPTR));
+#ifndef QT_NO_ACCESSIBILITY
+        fiveButton->setAccessibleName(QApplication::translate("main_appClass", "tfive", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        fiveButton->setText(QApplication::translate("main_appClass", "5", Q_NULLPTR));
+#ifndef QT_NO_ACCESSIBILITY
+        pushButton_5->setAccessibleName(QApplication::translate("main_appClass", "upArrow", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        pushButton_5->setText(QString());
+#ifndef QT_NO_ACCESSIBILITY
+        pushButton_4->setAccessibleName(QApplication::translate("main_appClass", "downArrow", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        pushButton_4->setText(QString());
+#ifndef QT_NO_ACCESSIBILITY
+        pushButton_3->setAccessibleName(QApplication::translate("main_appClass", "leftArrow", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        pushButton_3->setText(QString());
+#ifndef QT_NO_ACCESSIBILITY
+        pushButton_2->setAccessibleName(QApplication::translate("main_appClass", "rightArrow", Q_NULLPTR));
+#endif // QT_NO_ACCESSIBILITY
+        pushButton_2->setText(QString());
         pushButton->setText(QString());
+        menuStart->setTitle(QApplication::translate("main_appClass", "Opcje", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -1,4 +1,10 @@
 <RCC>
-    <qresource prefix="main_app">
+    <qresource prefix="/main_app">
+        <file alias="downArrow">E:/Pobrane/Icons8-Ios7-Arrows-Down.ico</file>
+        <file alias="leftArrow">E:/Pobrane/Icons8-Ios7-Arrows-Left.ico</file>
+        <file alias="rightArrow">E:/Pobrane/Icons8-Ios7-Arrows-Right.ico</file>
+        <file alias="upArrow">E:/Pobrane/Icons8-Ios7-Arrows-Up.ico</file>
+        <file alias="deleteButton">E:/Pobrane/icons8-delete-filled-50.png</file>
+        <file alias="trayIcon">E:/Pobrane/favicon.ico</file>
     </qresource>
 </RCC>

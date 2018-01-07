@@ -34,20 +34,42 @@ alignment: center;
 }
 QListWidget#toAddGesturesListWidget::item:hover {
 background-color: rgba(255,114,114,255);
+border: none;
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListWidget" name="gesturesList">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>34</width>
+        <height>34</height>
+       </size>
+      </property>
+      <property name="resizeMode">
+       <enum>QListView::Adjust</enum>
+      </property>
+      <property name="spacing">
+       <number>5</number>
       </property>
       <property name="viewMode">
        <enum>QListView::ListMode</enum>
@@ -56,12 +78,21 @@ background-color: rgba(255,114,114,255);
     </item>
     <item>
      <widget class="QGroupBox" name="groupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="title">
        <string>Add new gesture</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="topMargin">
         <number>1</number>
+       </property>
+       <property name="bottomMargin">
+        <number>3</number>
        </property>
        <item>
         <widget class="QWidget" name="verticalWidget" native="true">
@@ -82,128 +113,269 @@ background-color: rgba(255,114,114,255);
            <number>3</number>
           </property>
           <item>
-           <widget class="QListWidget" name="listWidget_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="cursor" stdset="0">
-             <cursorShape>ArrowCursor</cursorShape>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="showDropIndicator" stdset="0">
-             <bool>false</bool>
-            </property>
-            <property name="dragDropMode">
-             <enum>QAbstractItemView::NoDragDrop</enum>
-            </property>
-            <property name="defaultDropAction">
-             <enum>Qt::CopyAction</enum>
-            </property>
-            <property name="alternatingRowColors">
-             <bool>false</bool>
-            </property>
-            <property name="selectionMode">
-             <enum>QAbstractItemView::NoSelection</enum>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>34</width>
-              <height>34</height>
-             </size>
-            </property>
-            <property name="flow">
-             <enum>QListView::LeftToRight</enum>
-            </property>
-            <property name="isWrapping" stdset="0">
-             <bool>false</bool>
-            </property>
-            <property name="resizeMode">
-             <enum>QListView::Fixed</enum>
-            </property>
-            <property name="spacing">
-             <number>3</number>
-            </property>
-            <property name="viewMode">
-             <enum>QListView::ListMode</enum>
-            </property>
-            <property name="uniformItemSizes">
-             <bool>false</bool>
-            </property>
-            <property name="batchSize">
-             <number>100</number>
-            </property>
-            <property name="selectionRectVisible">
-             <bool>true</bool>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="topMargin">
+             <number>0</number>
             </property>
             <item>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="textAlignment">
-              <set>AlignTrailing|AlignVCenter</set>
-             </property>
-             <property name="background">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>222</red>
-                <green>222</green>
-                <blue>222</blue>
-               </color>
-              </brush>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Down.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Down.ico</iconset>
-             </property>
-             <property name="flags">
-              <set>ItemIsEnabled</set>
-             </property>
+             <widget class="QPushButton" name="oneButton">
+              <property name="minimumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="accessibleName">
+               <string>tone</string>
+              </property>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </widget>
             </item>
             <item>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Up.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Up.ico</iconset>
-             </property>
+             <widget class="QPushButton" name="twoButton">
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="accessibleName">
+               <string>ttwo</string>
+              </property>
+              <property name="text">
+               <string>2</string>
+              </property>
+             </widget>
             </item>
             <item>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Left.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Left.ico</iconset>
-             </property>
+             <widget class="QPushButton" name="threeButton">
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="accessibleName">
+               <string>tthree</string>
+              </property>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </widget>
             </item>
             <item>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Right.ico</normaloff>E:/Pobrane/Icons8-Ios7-Arrows-Right.ico</iconset>
-             </property>
+             <widget class="QPushButton" name="fourButton">
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="accessibleName">
+               <string>tfour</string>
+              </property>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </widget>
             </item>
-           </widget>
+            <item>
+             <widget class="QPushButton" name="fiveButton">
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="accessibleName">
+               <string>tfive</string>
+              </property>
+              <property name="text">
+               <string>5</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="accessibleName">
+               <string>upArrow</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="main_app.qrc">
+                <normaloff>:/main_app/upArrow</normaloff>:/main_app/upArrow</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="accessibleName">
+               <string>downArrow</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="main_app.qrc">
+                <normaloff>:/main_app/downArrow</normaloff>:/main_app/downArrow</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="accessibleName">
+               <string>leftArrow</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="main_app.qrc">
+                <normaloff>:/main_app/leftArrow</normaloff>:/main_app/leftArrow</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="maximumSize">
+               <size>
+                <width>42</width>
+                <height>42</height>
+               </size>
+              </property>
+              <property name="accessibleName">
+               <string>rightArrow</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="main_app.qrc">
+                <normaloff>:/main_app/rightArrow</normaloff>:/main_app/rightArrow</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QListWidget" name="toAddGesturesListWidget">
@@ -247,7 +419,7 @@ background-color: rgba(255,114,114,255);
              <enum>QListView::Fixed</enum>
             </property>
             <property name="selectionRectVisible">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -301,29 +473,37 @@ background-color: rgba(255,114,114,255);
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuStart">
+    <property name="title">
+     <string>Opcje</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionStop"/>
+    <addaction name="actionInfo"/>
+   </widget>
+   <addaction name="menuStart"/>
   </widget>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionInfo">
+   <property name="text">
+    <string>Info</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="main_app.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>listWidget_2</sender>
-   <signal>itemClicked(QListWidgetItem*)</signal>
-   <receiver>main_appClass</receiver>
-   <slot>addToGesturesToBeAdded(QListWidgetItem*)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>236</x>
-     <y>455</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>692</x>
-     <y>372</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>toAddGesturesListWidget</sender>
    <signal>itemClicked(QListWidgetItem*)</signal>
@@ -340,9 +520,221 @@ background-color: rgba(255,114,114,255);
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>694</x>
+     <y>417</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>692</x>
+     <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>358</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>695</x>
+     <y>397</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>310</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>693</x>
+     <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addGesture()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>643</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>652</x>
+     <y>583</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionStop</sender>
+   <signal>triggered()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>actionStop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionStart</sender>
+   <signal>triggered()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>actionStart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>36</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionInfo</sender>
+   <signal>triggered()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>actionInfo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fiveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>694</x>
+     <y>266</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fourButton</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>454</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>691</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>threeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>693</x>
+     <y>221</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>twoButton</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>93</x>
+     <y>447</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>693</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>oneButton</sender>
+   <signal>clicked()</signal>
+   <receiver>main_appClass</receiver>
+   <slot>addToGesturesToBeAdded()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>450</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>694</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>addToGesturesToBeAdded(QListWidgetItem*)</slot>
+  <slot>addToGesturesToBeAdded()</slot>
   <slot>removeFromGesturesToBeAdded(QListWidgetItem*)</slot>
+  <slot>addGesture()</slot>
+  <slot>actionStart()</slot>
+  <slot>actionStop()</slot>
+  <slot>actionInfo()</slot>
  </slots>
 </ui>
