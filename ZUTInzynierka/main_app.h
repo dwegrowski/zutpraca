@@ -25,7 +25,7 @@ private:
 public slots:
     void actionStart();
     void actionStop();
-    void actionInfo();
+    void actionShow_hand();
     void addToGesturesToBeAdded();
     void removeFromGesturesToBeAdded(QListWidgetItem* item);
     void addGesture();

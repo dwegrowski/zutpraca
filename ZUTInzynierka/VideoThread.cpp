@@ -3,6 +3,7 @@
 #include <iostream>
 #include <QElapsedTimer>
 #include <qdebug.h>
+#include <chrono>
 
 VideoThread::VideoThread(GestureModel* model, QObject *parent)
     : QThread(parent)
@@ -16,8 +17,17 @@ VideoThread::~VideoThread()
 {
 }
 
+void VideoThread::set_show_window(bool flag)
+{
+    if (!flag)
+        destroyWindow("Live");
+    recognizer.set_show_hand(flag);
+}
+
 void VideoThread::run()
 {
+    double sr = 0;
+    double l = 0;
     QVector<HandMovement> g;
     bool start_symbol = false;
     
@@ -36,36 +46,25 @@ void VideoThread::run()
         if (frame.empty()) {
             break;
         }
+        //auto start = std::chrono::steady_clock::now();
         int hand2 = recognizer.algorithm(frame);
-
+        //auto end = std::chrono::steady_clock::now();
+        //auto diff = end - start;
+        //l = l + 1.0;
+        //sr = ((sr * l) + std::chrono::duration <double, std::milli>(diff).count()) / l;
+        //qDebug() << "srednia - " << sr << endl;
+        //qDebug() << std::chrono::duration <double, std::milli>(diff).count() << " ns" << endl;
         if (hand2 != hand)
         {
-            //tray->showMessage(QString("Recognized gesture"), QString::number(hand2), QSystemTrayIcon::Information, 800);
-            
             auto t = timer.restart();
             qDebug() << hand2 << hand << t;
             if (t >= 500)
             {
-               /* qDebug() << "Wczytano " << hand;
-                if (hand == 0)
-                {
-                    if (g.size() != 0)
-                    {
-                        process(g);
-                        g.clear();
-                        continue;
-                    }
-                    
-                }
-                else
-                {*/
                 if (hand != 0)
                 {
                     qDebug() << "APPENDUJE " << hand;
                     g.append(static_cast<HandMovement>(hand));
-                }
-                //}
-                
+                }              
             }
             hand = hand2;
         }

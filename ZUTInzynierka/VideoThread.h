@@ -12,6 +12,7 @@ class VideoThread : public QThread
 public:
     VideoThread(GestureModel* model, QObject *parent = 0);
     ~VideoThread();
+    void set_show_window(bool);
 
 protected:
     void run() override;

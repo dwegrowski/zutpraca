@@ -23,8 +23,17 @@ float GestureRecognizer::innerAngle(float px1, float py1, float px2, float py2, 
 GestureRecognizer::GestureRecognizer()
 {
     pMOG2 = createBackgroundSubtractorMOG2();
+    pMOG2->setBackgroundRatio(0.25);
+    pMOG2->setNMixtures(3);
+    pMOG2->setShadowValue(0);
+    pMOG2->setShadowThreshold(0.35);
 }
 
+void szybkafunkcja(std::vector<cv::Point> in, std::vector<int> hull, std::vector<cv::Point> &out)
+{
+    for(int i = 0; i < hull.size(); i++)
+        out.push_back(in[hull[i]]);
+}
 
 GestureRecognizer::~GestureRecognizer()
 {
@@ -32,9 +41,9 @@ GestureRecognizer::~GestureRecognizer()
 
 int GestureRecognizer::algorithm(Mat frame)
 {
+    //imshow("Oryginalny obraz", frame);
     int fingers = 0;
     Mat mask;
-    static int correct_noise = 0;
     
     Mat element = getStructuringElement(0, { 5,5 });
 
@@ -43,11 +52,17 @@ int GestureRecognizer::algorithm(Mat frame)
     // FILTER FRAME ----------------------------------------
 
     GaussianBlur(frame, frame, { 7, 7 }, 0);
-    pMOG2->apply(frame, mask, 0.0005);
+    //imshow("Po rozmyciu", frame);
+    pMOG2->apply(frame, mask, learningRate);
+    cv::Mat img_rgb(mask.size(), CV_8UC3);
+    //imshow("Odejmowanie tla", mask);
     medianBlur(mask, mask, 7);
-    Mat el = getStructuringElement(0, { 5,5 });
-    filter2D(mask, mask, CV_8U, el);
+    //imshow("Rozmycie medianowe", mask);
+    //Mat el = getStructuringElement(0, { 5,5 });
+    /*filter2D(mask, mask, CV_8U, el);
+    imshow("Filtr 2D", mask);
     cv::threshold(mask, mask, 195.0, 255, 0);
+    imshow("Progowanie", mask);*/
 
     // FIND CONTOURS -------------------------------------------------
 
@@ -67,34 +82,34 @@ int GestureRecognizer::algorithm(Mat frame)
             largest_contour_index = i;              //Store the index of largest contour
         }
     }
-    /*if (largest_area > frame.rows * frame.cols * 0.90)
-    {
-        correct_noise = -1;
-        return fingers;
-    }
-    else
-        correct_noise = 0;*/
+
     // FILL THE POSSIBLE HAND REGION
+
     std::vector<std::vector<cv::Point>> contours2{ contours[largest_contour_index] };
-    drawContours(mask, contours2, 0, { 255, 0 ,0 }, CV_FILLED);
+    /*drawContours(mask, contours2, 0, { 255, 0 ,0 }, CV_FILLED);
+    cv::cvtColor(mask, img_rgb, CV_GRAY2RGB);
+    drawContours(img_rgb, contours2, 0, { 255, 0, 0 }, 4);
+    imshow("Kontur", img_rgb);*/
 
     std::vector<std::vector<int>> hull(1);
-    if (contours.size() && largest_area > (frame.rows * frame.cols) * 0.075)
+    if (contours.size() && largest_area > (frame.rows * frame.cols) * 0.10)
     {
         convexHull(contours[largest_contour_index], hull[0]);
         int wide = 0;
         int count = 0;
 
-        //drawContours(frame, hull[0], -1, { 0,255,0 }, 3);
+        /*std::vector<std::vector<cv::Point>> con(1);
+        szybkafunkcja(contours[largest_contour_index], hull[0], con[0]);
+        drawContours(img_rgb, con, -1, { 0,255,0 }, 3);
+        imshow("Otoczka wypukla", img_rgb);*/
         std::vector<cv::Vec4i> defects;
         convexityDefects(contours[largest_contour_index], hull[0], defects);
-        int size = 2;
+
         for (const Vec4i& v : defects)
         {
             float depth = v[3] / 256.0;
             if (depth > 18) //  filter defects by depth, e.g more than 10
             {
-                Rect middle{ 50, 50, frame.cols - 100, frame.rows - 100 };
                 int startidx = v[0]; Point ptStart(contours[largest_contour_index][startidx]);
                 int endidx = v[1]; Point ptEnd(contours[largest_contour_index][endidx]);
                 int faridx = v[2]; Point ptFar(contours[largest_contour_index][faridx]);
@@ -102,14 +117,16 @@ int GestureRecognizer::algorithm(Mat frame)
                 if (ptStart.y >= frame.rows - 50 || ptEnd.y >= frame.rows - 50)
                     continue;
                 float angle = innerAngle(ptStart.x, ptStart.y, ptEnd.x, ptEnd.y, ptFar.x, ptFar.y);
+                if (angle > 160)
+                    continue;
                 if (angle > 42.0)
                     ++wide;
                 ++count;
 
-                line(frame, ptStart, ptEnd, Scalar(255, 255, 0), 3);
-                line(frame, ptStart, ptFar, Scalar(0, 255, 0), 2);
-                line(frame, ptEnd, ptFar, Scalar(0, 0, 255), 1);
-                circle(frame, ptFar, 4, Scalar(0, 255, 0), size++);
+                line(img_rgb, ptStart, ptEnd, Scalar(0, 198, 255), 2);
+                line(img_rgb, ptStart, ptFar, Scalar(0, 198, 255), 2);
+                line(img_rgb, ptEnd, ptFar, Scalar(0, 198, 255), 2);
+                circle(img_rgb, ptFar, 4, Scalar(0, 198, 255), 4);
                 
             }
         }
@@ -123,10 +140,17 @@ int GestureRecognizer::algorithm(Mat frame)
         else if (count == 4)
             count = 5;
         fingers = count;
+        //imshow("Wykrycie defektow", img_rgb);
         putText(frame, std::to_string(count), { 59, 59 }, CV_FONT_HERSHEY_PLAIN, 6.0, { 255, 210 ,70 }, 2);
-        imshow("Live", mask);
-        imshow("Live2", frame);
+        
         cv::waitKey(4);
     }
+    if(show_window)
+        imshow("Live", mask);
     return fingers;
+}
+
+void GestureRecognizer::set_show_hand(bool flag)
+{
+    show_window = flag;
 }

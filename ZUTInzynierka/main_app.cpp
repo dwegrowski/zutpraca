@@ -23,15 +23,18 @@ main_app::main_app(QWidget *parent)
     ui.comboBox->setCurrentIndex(0);
     enumMap_action.insert("Select an action", Action::NOTHING);
 
-    enumMap_hand.insert("upArrow", HandMovement::UP);
-    enumMap_hand.insert("downArrow", HandMovement::DOWN);
-    enumMap_hand.insert("leftArrow", HandMovement::LEFT);
-    enumMap_hand.insert("rightArrow", HandMovement::RIGHT);
     enumMap_hand.insert("tone", HandMovement::ONE);
     enumMap_hand.insert("ttwo", HandMovement::TWO);
     enumMap_hand.insert("tthree", HandMovement::THREE);
     enumMap_hand.insert("tfour", HandMovement::FOUR);
     enumMap_hand.insert("tfive", HandMovement::FIVE);
+
+    QAction *start = ui.toolBar->addAction("Start");
+    connect(start, &QAction::triggered, this, &main_app::actionStart);
+    QAction *stop = ui.toolBar->addAction("Stop");
+    connect(stop, &QAction::triggered, this, &main_app::actionStop);
+    QAction *show = ui.toolBar->addAction("Show hand");
+    connect(show, &QAction::triggered, this, &main_app::actionShow_hand);
 
     try 
     {
@@ -55,10 +58,14 @@ void main_app::actionStart()
 
 void main_app::actionStop()
 {
+    vid.terminate();
 }
 
-void main_app::actionInfo()
+void main_app::actionShow_hand()
 {
+    static bool flag = false;
+    flag = !flag;
+    vid.set_show_window(flag);
 }
 
 void main_app::addToGesturesToBeAdded()
@@ -171,23 +178,11 @@ void main_app::createGestureWidget(Gesture &g)
     sizePolicy1.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
     listWidget->setSizePolicy(sizePolicy1);
     listWidget->setMinimumSize(QSize(0, 50));
-    //listWidget->setMaximumSize(QSize(16777215, 44));
-    //listWidget->setFrameShape(QFrame::Box);
     listWidget->setIconSize(QSize(34, 34));
     listWidget->setFlow(QListView::LeftToRight);
     listWidget->setResizeMode(QListView::Fixed);
     listWidget->setSpacing(1);
-    /*for (int i = 0; i < ui.toAddGesturesListWidget->count(); i++)
-    {
-        QPushButton* button = static_cast<QPushButton*>(ui.toAddGesturesListWidget->itemWidget(ui.toAddGesturesListWidget->item(i)));
-        QPushButton *button_2 = new QPushButton(button->icon(), nullptr);
-        button_2->setAccessibleName(button->accessibleName());
-        button_2->setIconSize({ 36,36 });
-        button_2->setFixedSize({ 44,44 });
-        QListWidgetItem *__qlistwidgetitem1 = new QListWidgetItem(listWidget);
-        __qlistwidgetitem1->setSizeHint({ 44,44 });
-        listWidget->setItemWidget(__qlistwidgetitem1, button_2);
-    }*/
+
     for (int i = 0; i < g.gestures.count(); i++)
     {
         QString value = enumMap_hand.key(g.gestures[i]);
